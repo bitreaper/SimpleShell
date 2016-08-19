@@ -1,0 +1,52 @@
+
+#include <iostream>
+#include <cstring>
+#include "SimpleShell.h"
+
+
+using namespace std;
+
+ExecStatus foo( CommandLine* clp )
+{
+   cout << "Foo called" << endl;
+   return SUCCESS;
+}
+
+ExecStatus bar( CommandLine* clp )
+{
+   cout << "Bar called" << endl;
+   return SUCCESS;
+}
+
+ExecStatus failme( CommandLine* clp )
+{
+   cout << "failme called" << endl;
+   return FAILED;
+}
+
+Command cmdlist[] = {
+   {"foo",foo},
+   {"bar",bar},
+   {"failme",failme},
+   {NULL,NULL}
+};
+
+
+int main( int argc, char** argv)
+{
+   SimpleShell shell(cmdlist);
+   ExecStatus retCode = NOTFOUND;
+   char command[256];
+   memset( command, 0, 256 );
+   
+   while( command[0] != '.' )
+   {
+      cout << "Enter a command, . to quit: ";
+      cin >> command;
+      cout << "You entered: \"" << command << "\", handing to shell"  << endl;
+      retCode = shell.executeCommand( command );
+      cout << "Return code is " << retCode << endl;
+   }
+
+   return 0;
+}

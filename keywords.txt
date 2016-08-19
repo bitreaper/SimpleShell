@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map For SimpleShell
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SimpleShell	KEYWORD1	SimpleShell
+CommandLine KEYWORD1    CommandLine
+Command     KEYWORD1    Command
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+executeCommand	KEYWORD2
+readCommand     KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
